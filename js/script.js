@@ -1,17 +1,26 @@
-var button = document.querySelector(".show-cat");
-//console.log(button.outerHTML);
-var cat = document.querySelector(".cat");
-//console.log(cat.outerHTML);
+var button = document.querySelector(".got-this");
+var modal = document.querySelector(".modal");
+var modalX = document.querySelector(".modal-x");
+
+var closeModal = function () {
+  modal.classList.remove("show-modal");
+  button.innerText = "Who's got this?";
+};
+
 button.addEventListener("click", function () {
-  if (cat.classList.contains("show")) {
-    //console.log("Yes");
-    cat.classList.remove("show");
-    button.innerText = "Wait, come back!";
-    button.classList.add("disappear");
-  } else {
-    //console.log("No");
-    cat.classList.add("show");
-    button.innerText = "Shoo, cat!!";
-    button.classList.remove("disappear");
+  modal.classList.add("show-modal");
+  button.innerText = "You've got this!!!";
+});
+
+modalX.addEventListener("click", function () {
+  closeModal();
+});
+
+document.addEventListener("keydown", function (e) {
+  console.log(e.key);
+  if (e.key === "Escape") {
+    if (modal.classList.contains("show-modal")) {
+      closeModal();
+    }
   }
 });
